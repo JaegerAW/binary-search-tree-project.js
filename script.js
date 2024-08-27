@@ -174,15 +174,18 @@ class BinarySearchTree {
     let node = this.find(value);
     return this.findMaxHeight(node);
   }
-
-  depth(node, value) {
+  depth(value) {
+    return this.findDepth(this.root, value);
+  }
+  findDepth(node, value) {
     //given a node, return the distance from the node to the root.
     if (!node) {
+      console.log("not found");
       return undefined;
     }
     if (node.value === value) return 0;
-    else if (node.value > value) return this.depth(node.left, value) + 1;
-    else return this.depth(node.right, value) + 1;
+    else if (node.value > value) return this.findDepth(node.left, value) + 1;
+    else return this.findDepth(node.right, value) + 1;
   }
 
   isBalanced() {
@@ -286,7 +289,7 @@ class BinarySearchTree {
 
 const odinTree = new BinarySearchTree();
 const array = [10, 5, 15, 20, 21, 1, 17, 24];
-const array1 = [9, 4, 17, 3, 6, 22, 5, 7, 20];
+const array1 = [5, 3, 6, 2, 4, 7];
 odinTree.buildTree(array1);
 
 //                                  10
