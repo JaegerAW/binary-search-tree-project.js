@@ -285,6 +285,16 @@ class BinarySearchTree {
     traverse(current);
     return data;
   }
+  secondLargestNode() {
+    return this.helpSecondLargestNode(this.root);
+  }
+  helpSecondLargestNode(node) {
+    if (!node.right) return null;
+    else {
+      let prev = node;
+      return this.helpSecondLargestNode(node.right);
+    }
+  }
 }
 
 const odinTree = new BinarySearchTree();
